@@ -1,0 +1,101 @@
+# Website Core Images
+
+## Image Size Requirements
+
+Product Images (Books):
+- Size: 800x1200px (2:3 ratio, portrait orientation)
+- This ratio is standard for book covers, similar to the dimensions of a physical book
+
+Category Images:
+- Size: 1200x800px (3:2 ratio, landscape orientation)
+- This wider ratio is ideal for banner/header images that showcase category themes
+
+Welcome/Hero Images:
+- Size: 1920x1080px (16:9 ratio, landscape orientation)
+- Standard widescreen ratio, perfect for full-width hero sections and sliders
+
+Policy Images:
+- Size: 800x600px (4:3 ratio, landscape orientation)
+- Traditional landscape ratio, suitable for content section images
+
+# Image Prompts
+
+## Hero/Welcome Images
+images/welcome/storefront.jpg (1920x1080px, 16:9)
+"Modern bookstore exterior with large glass windows displaying books, warm lighting, and a welcoming entrance. The store name 'BookNook' is displayed in elegant lettering above the door."
+
+images/welcome/reading_area.jpg (1920x1080px, 16:9)
+"Cozy reading area inside bookstore with comfortable armchairs, soft lighting, wooden bookshelves, and a small coffee table with books."
+
+## Category Images
+images/categories/fiction.jpg (1200x800px, 3:2)
+"A dramatic arrangement of classic and contemporary fiction books on wooden shelves, with atmospheric lighting highlighting book spines of various colors."
+
+images/categories/non-fiction.jpg (1200x800px, 3:2)
+"Clean, modern display of non-fiction books organized by topic, with academic and professional books prominently featured."
+
+images/categories/childrens.jpg (1200x800px, 3:2)
+"Vibrant and colorful children's book section with illustrated book covers, stuffed animals, and kid-friendly reading nooks."
+
+## Policy Images
+images/policy/shipping.jpg (800x600px, 4:3)
+"Professional delivery service with branded BookNook packaging and careful handling of books."
+
+images/policy/returns.jpg (800x600px, 4:3)
+"Customer service representative at BookNook counter helping a customer with a return, showing friendly and professional service."
+
+images/policy/privacy.jpg (800x600px, 4:3)
+"Abstract representation of digital security with a lock icon and flowing data visualization, maintaining professional aesthetics."
+
+## About Us Image
+images/about_us.jpg (1200x800px, 3:2)
+"Interior view of BookNook store showing staff arranging books, customers browsing, and the overall welcoming atmosphere."
+
+# Product Images (Books)
+
+## Fiction Books (Category 1)
+images/products/b1_1.jpg - The Midnight Library (800x1200px, 2:3)
+"Book cover design featuring a mystical library with glowing shelves between day and night, ethereal lighting, and a clock showing midnight"
+
+images/products/b1_2.jpg - The Silent Patient (800x1200px, 2:3)
+"Minimalist book cover with a woman's face partially obscured by shadow, creating an atmosphere of mystery"
+
+images/products/b1_3.jpg - Project Hail Mary (800x1200px, 2:3)
+"Sci-fi book cover showing a lone spacecraft against the backdrop of a distant star, with subtle light effects"
+
+images/products/b1_4.jpg - The Seven Husbands of Evelyn Hugo (800x1200px, 2:3)
+"Glamorous 1950s Hollywood-style cover featuring an elegant woman in an emerald green dress"
+
+## Non-Fiction Books (Category 2)
+images/products/b2_1.jpg - Atomic Habits (800x1200px, 2:3)
+"Clean, modern cover design with interconnected dots forming a pattern, representing habit formation"
+
+images/products/b2_2.jpg - Sapiens (800x1200px, 2:3)
+"Artistic representation of human evolution timeline with silhouettes and DNA strands"
+
+images/products/b2_3.jpg - The Body (800x1200px, 2:3)
+"Anatomical illustration style cover with detailed human body systems in vintage medical drawing style"
+
+images/products/b2_4.jpg - Think Again (800x1200px, 2:3)
+"Abstract brain illustration with gears and pathways, suggesting cognitive processes"
+
+## Children's Books (Category 3)
+images/products/b3_1.jpg - The Gruffalo (800x1200px, 2:3)
+"Whimsical illustration of the Gruffalo character in a forest setting with rich colors"
+
+images/products/b3_2.jpg - Where the Wild Things Are (800x1200px, 2:3)
+"Magical forest scene with fantastical creatures and a child in a wolf costume"
+
+images/products/b3_3.jpg - The Very Hungry Caterpillar (800x1200px, 2:3)
+"Bright, colorful illustration of a caterpillar surrounded by various foods"
+
+images/products/b3_4.jpg - Wonder (800x1200px, 2:3)
+"Gentle, inspiring cover featuring a symbolic face illustration with stars and positive imagery"
+
+# Image Style Guidelines
+- Maintain consistent lighting and color grading across all images
+- Ensure professional quality and high resolution
+- Text should be clear and readable where applicable
+- Use appropriate white space and composition
+- Follow the specified aspect ratios strictly for each image type
+- Ensure images are optimized for web without losing quality
