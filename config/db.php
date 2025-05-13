@@ -2,7 +2,7 @@
 $host = 'localhost';
 $db   = 'vehicle_rental_db';
 $user = 'root';
-$pass = 'root';
+$pass = '';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
