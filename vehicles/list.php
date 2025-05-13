@@ -1,12 +1,13 @@
 <?php
 session_start();
 require_once '../config/db.php';
+require_once '../config/constants.php';
 
 // Use user header if logged in, otherwise public header
 if (isset($_SESSION['user_id'])) {
-  include '../user/includes/header.php';
+  include BASE_PATH . '/user/includes/header.php';
 } else {
-  include '../includes/header.php';
+  include BASE_PATH . '/includes/header.php';
 }
 ?>
 <main class="container vehicle-page">
@@ -38,59 +39,59 @@ if (isset($_SESSION['user_id'])) {
   </form>
 
   <!-- Vehicle Listings -->
-   <div class="vehicle-listing">
-  <section class="vehicle-grid">
-    <?php
-    $query = "SELECT * FROM vehicles WHERE 1";
-    $params = [];
+  <div class="vehicle-listing">
+    <section class="vehicle-grid">
+      <?php
+      $query = "SELECT * FROM vehicles WHERE 1";
+      $params = [];
 
-    if (!empty($_GET['type'])) {
-      $query .= " AND type = ?";
-      $params[] = $_GET['type'];
-    }
-
-    if (!empty($_GET['price'])) {
-      switch ($_GET['price']) {
-        case 'low':
-          $query .= " AND rental_price < 50";
-          break;
-        case 'medium':
-          $query .= " AND rental_price BETWEEN 50 AND 100";
-          break;
-        case 'high':
-          $query .= " AND rental_price > 100";
-          break;
+      if (!empty($_GET['type'])) {
+        $query .= " AND type = ?";
+        $params[] = $_GET['type'];
       }
-    }
 
-    if (!empty($_GET['availability'])) {
-      $query .= " AND availability = ?";
-      $params[] = $_GET['availability'];
-    }
+      if (!empty($_GET['price'])) {
+        switch ($_GET['price']) {
+          case 'low':
+            $query .= " AND rental_price < 50";
+            break;
+          case 'medium':
+            $query .= " AND rental_price BETWEEN 50 AND 100";
+            break;
+          case 'high':
+            $query .= " AND rental_price > 100";
+            break;
+        }
+      }
 
-    $stmt = $pdo->prepare($query);
-    $stmt->execute($params);
-    $vehicles = $stmt->fetchAll();
+      if (!empty($_GET['availability'])) {
+        $query .= " AND availability = ?";
+        $params[] = $_GET['availability'];
+      }
 
-    if ($vehicles) {
-      foreach ($vehicles as $vehicle): ?>
-        <div class="vehicle-card">
-          <img src="../assets/images/<?= htmlspecialchars($vehicle['image']) ?>" alt="<?= htmlspecialchars($vehicle['model']) ?>">
-          <div class="vehicle-info">
-            <h3><?= htmlspecialchars($vehicle['model']) ?></h3>
-            <p>Type: <?= htmlspecialchars($vehicle['type']) ?></p>
-            <p>Price: $<?= $vehicle['rental_price'] ?>/day</p>
-            <p>Status: <?= $vehicle['availability'] ?></p>
-            <a href="details.php?id=<?= $vehicle['vehicle_id'] ?>" class="btn-small">View Details</a>
+      $stmt = $pdo->prepare($query);
+      $stmt->execute($params);
+      $vehicles = $stmt->fetchAll();
+
+      if ($vehicles) {
+        foreach ($vehicles as $vehicle): ?>
+          <div class="vehicle-card">
+            <img src="<?= BASE_URL ?>/assets/images/<?= htmlspecialchars($vehicle['image']) ?>" alt="<?= htmlspecialchars($vehicle['model']) ?>">
+            <div class="vehicle-info">
+              <h3><?= htmlspecialchars($vehicle['model']) ?></h3>
+              <p>Type: <?= htmlspecialchars($vehicle['type']) ?></p>
+              <p>Price: $<?= $vehicle['rental_price'] ?>/day</p>
+              <p>Status: <?= $vehicle['availability'] ?></p>
+              <a href="<?= BASE_URL ?>/vehicles/details.php?id=<?= $vehicle['vehicle_id'] ?>" class="btn-small">View Details</a>
+            </div>
           </div>
-        </div>
-      <?php endforeach;
-    } else {
-      echo "<p class='no-results'>No vehicles found matching your criteria.</p>";
-    }
-    ?>
-  </section>
+        <?php endforeach;
+      } else {
+        echo "<p class='no-results'>No vehicles found matching your criteria.</p>";
+      }
+      ?>
+    </section>
   </div>
 </main>
 
-<?php include '../includes/footer.php'; ?>
+<?php include BASE_PATH . '/includes/footer.php'; ?>
