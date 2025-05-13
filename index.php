@@ -1,3 +1,4 @@
+
 <?php 
 include './includes/header.php'; 
 include './config/db.php';
@@ -19,6 +20,7 @@ include './config/db.php';
       <h3>Wide Vehicle Selection</h3>
       <p>From budget-friendly to luxury—choose what fits your style.</p>
       <a href="about_us.php" class="btn-secondary">Learn More</a>
+
     </div>
     <div class="feature-card">
       <h3>Easy Booking</h3>
@@ -86,6 +88,7 @@ include './config/db.php';
 
     </div>
   </section>
+
 
 </main>
 
