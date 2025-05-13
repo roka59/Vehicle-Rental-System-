@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../config/db.php';
+require_once '../config/constants.php';
 include 'includes/header.php';
 
 if (!isset($_SESSION['user_id']) || !isset($_GET['rental_id'])) {
@@ -26,26 +27,30 @@ if (!$data) {
   exit();
 }
 
-$days = (strtotime($data['end_date']) - strtotime($data['start_date'])) / 86400;
-$total = $data['rental_price'] * max(1, $days);
+$start = strtotime($data['start_date']);
+$end = strtotime($data['end_date']);
+$days = max(1, ceil(($end - $start) / 86400));
+$total = $data['rental_price'] * $days;
 ?>
 
 <main class="container booking-review-page">
   <h2 class="section-title">Review Your Booking</h2>
+
   <div class="booking-review-card">
-    <img src="../assets/images/<?= htmlspecialchars($data['image']) ?>" alt="<?= $data['model'] ?>" />
+    <img src="<?= BASE_URL ?>/assets/images/<?= htmlspecialchars($data['image']) ?>" alt="<?= htmlspecialchars($data['model']) ?>" />
+
     <div class="booking-details">
       <h3><?= htmlspecialchars($data['model']) ?></h3>
-      <p><strong>From:</strong> <?= $data['start_date'] ?></p>
-      <p><strong>To:</strong> <?= $data['end_date'] ?></p>
+      <p><strong>From:</strong> <?= htmlspecialchars($data['start_date']) ?></p>
+      <p><strong>To:</strong> <?= htmlspecialchars($data['end_date']) ?></p>
       <p><strong>Days:</strong> <?= $days ?></p>
       <p><strong>Total Price:</strong> $<?= number_format($total, 2) ?></p>
 
-      <a href="payment_request.php?rental_id=<?= $rental_id ?>" class="btn-primary">Pay Now</a>
-      <div class="back-link">
-  <button onclick="window.history.back();" class="btn-secondary">← Go Back</button>
-</div>
+      <a href="<?= BASE_URL ?>/user/payment_request.php?rental_id=<?= $rental_id ?>" class="btn-primary">Pay Now</a>
 
+      <div class="back-link">
+        <button onclick="window.history.back();" class="btn-secondary">← Go Back</button>
+      </div>
     </div>
   </div>
 </main>
