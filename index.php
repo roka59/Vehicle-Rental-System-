@@ -1,12 +1,13 @@
 <?php 
 include './includes/header.php'; 
-include './config/db.php';
+require_once './config/db.php';
 ?>
 
 <main class="home-container">
+  <!-- Hero Section -->
   <section class="hero">
     <div class="hero-overlay"></div>
-    <img class="hero-image" src="assets/images/1.jpg" alt="Car Rental Image">
+    <img class="hero-image" src="assets/images/1.jpg" alt="Modern car available for rental">
     <div class="hero-text">
       <h1>Car just for you</h1>
       <p>Get the car you want right now!!</p>
@@ -14,6 +15,7 @@ include './config/db.php';
     </div>
   </section>
 
+  <!-- Features Section -->
   <section class="features">
     <div class="feature-card">
       <h3>Wide Vehicle Selection</h3>
@@ -32,12 +34,11 @@ include './config/db.php';
     </div>
   </section>
 
+  <!-- Browse Categories Section -->
   <section class="browse-categories">
     <h2 class="section-title">Browse Categories</h2>
     <div class="category-grid">
       <?php
-      include './config/db.php';
-
       $types = ['Car', 'Bike', 'Van'];
 
       foreach ($types as $type) {
@@ -46,47 +47,47 @@ include './config/db.php';
           $vehicles = $stmt->fetchAll();
 
           if ($vehicles) {
-              echo "<a href='vehicles/list.php?type={$type}' class='category-card'>";
+              echo "<a href='vehicles/list.php?type=" . urlencode($type) . "' class='category-card'>";
               echo "<div class='category-slider'>";
 
               foreach ($vehicles as $vehicle) {
                   $img = htmlspecialchars($vehicle['image'] ?? 'default.jpg');
-                  $imgPath = "http://localhost/VEHICLE_RENT/assets/images/" . $img;
+                  $alt = htmlspecialchars($type . " image");
+                  $imgPath = "assets/images/" . $img;
 
-                  echo "<img src='{$imgPath}' alt='{$type}' class='category-image' />";
+                  echo "<img src='{$imgPath}' alt='{$alt}' class='category-image' loading='lazy' />";
               }
 
               echo "</div>";
               echo "<div class='category-info'>
-                      <h3>{$type}s</h3>
-                      <p>Explore a variety of {$type}s for your next trip.</p>
+                      <h3>" . htmlspecialchars($type) . "s</h3>
+                      <p>Explore a variety of " . htmlspecialchars($type) . "s for your next trip.</p>
                     </div>";
               echo "</a>";
           }
       }
       ?>
-      <script>
-        document.addEventListener("DOMContentLoaded", function () {
-          document.querySelectorAll(".category-slider").forEach(function (slider) {
-            const images = slider.querySelectorAll("img");
-            let index = 0;
-
-            if (images.length > 0) {
-              images[0].classList.add("active");
-
-              setInterval(() => {
-                images[index].classList.remove("active");
-                index = (index + 1) % images.length;
-                images[index].classList.add("active");
-              }, 4000);
-            }
-          });
-        });
-      </script>
-
     </div>
   </section>
-
 </main>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".category-slider").forEach(slider => {
+      const images = slider.querySelectorAll("img");
+      let index = 0;
+
+      if (images.length > 0) {
+        images[0].classList.add("active");
+
+        setInterval(() => {
+          images[index].classList.remove("active");
+          index = (index + 1) % images.length;
+          images[index].classList.add("active");
+        }, 4000);
+      }
+    });
+  });
+</script>
 
 <?php include 'includes/footer.php'; ?>
