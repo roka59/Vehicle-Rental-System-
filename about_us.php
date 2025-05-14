@@ -21,11 +21,11 @@
         <div class="section-content">
             <h2 class="section-title">Why Choose Us?</h2>
             <ul class="features-list">
-                <li>🚗 Diverse and well-maintained fleet of vehicles</li>
-                <li>⚡ Streamlined and intuitive booking process</li>
-                <li>🔒 Secure payment & user data protection</li>
-                <li>📞 24/7 customer assistance</li>
-                <li>📍 Real-time vehicle availability & location tracking</li>
+                <li><span aria-hidden="true">🚗</span> Diverse and well-maintained fleet of vehicles</li>
+                <li><span aria-hidden="true">⚡</span> Streamlined and intuitive booking process</li>
+                <li><span aria-hidden="true">🔒</span> Secure payment & user data protection</li>
+                <li><span aria-hidden="true">📞</span> 24/7 customer assistance</li>
+                <li><span aria-hidden="true">📍</span> Real-time vehicle availability & location tracking</li>
             </ul>
         </div>
     </section>
