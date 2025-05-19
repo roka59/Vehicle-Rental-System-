@@ -1,12 +1,12 @@
 <?php
 session_start();
-require_once '../config/constants.php';
-require_once BASE_PATH . 'config/db.php';
-include BASE_PATH . 'user/includes/header.php';
-include BASE_PATH . 'includes/flash.php'; 
+require_once dirname(__DIR__, 1).'/config/constants.php';
+require_once dirname(__DIR__, 1).'/config/db.php';
+include BASE_PATH . '/user/includes/header.php';
+include BASE_PATH . '/includes/flash.php'; 
 
 if (!isset($_SESSION['user_id'])) {
-  header("Location: " . BASE_URL . "login.php");
+  header("Location: " . BASE_URL . "/login.php");
   exit();
 }
 
@@ -21,9 +21,9 @@ $user = $stmt->fetch();
 <main class="container profile-page">
   <h2 class="section-title">My Profile</h2>
 
-  <?php displayFlash(); ?>
+  <?php include BASE_PATH . '/includes/flash.php'; ?>
 
-  <form action="<?= BASE_URL ?>user/update_profile.php" method="POST" class="profile-form">
+  <form action="<?= BASE_URL ?>/user/update_profile.php" method="POST" class="profile-form">
     <div class="form-group">
       <label for="name">Full Name:</label>
       <input type="text" name="name" id="name" value="<?= htmlspecialchars($user['name']) ?>" required />
@@ -53,4 +53,4 @@ $user = $stmt->fetch();
   </form>
 </main>
 
-<?php include BASE_PATH . 'user/includes/footer.php'; ?>
+<?php include BASE_PATH . '/user/includes/footer.php'; ?>

@@ -1,14 +1,11 @@
 <?php
-// Adjust according to your folder structure
-define("BASE_URL", "/Vehicle-Rental-System-"); // for use in URLs
-define("BASE_PATH", $_SERVER['DOCUMENT_ROOT'] . "/Vehicle-Rental-System-"); // for includes
-
 session_start();
-require_once BASE_PATH . 'config/db.php';  // Updated to use BASE_PATH
-include BASE_PATH . 'includes/header.php';  // Updated to use BASE_PATH
+require_once dirname(__DIR__,1) . '/config/constants.php';
+require_once dirname(__DIR__,1) . '/config/db.php';  
+include BASE_PATH . '/user/includes/header.php';  
 
 if (!isset($_SESSION['user_id'])) {
-  header("Location: " . BASE_URL . "login.php");
+  header("Location: " . BASE_URL . "/login.php");
   exit();
 }
 
@@ -82,7 +79,7 @@ function renderBookingCard($booking) {
 
   <div class="<?= $cardClass ?>">
     <div class="vehicle-img">
-      <img src="<?= BASE_URL ?>assets/images/<?= htmlspecialchars($booking['image']) ?>" alt="<?= $booking['model'] ?>"> <!-- Updated to use BASE_URL -->
+      <img src="<?= BASE_URL ?>/assets/images/<?= htmlspecialchars($booking['image']) ?>" alt="<?= $booking['model'] ?>"> <!-- Updated to use BASE_URL -->
     </div>
     <div class="booking-info">
       <h3><?= htmlspecialchars($booking['model']) ?></h3>
@@ -115,7 +112,7 @@ function renderBookingCard($booking) {
         </button>
 
         <?php if (!$hasPayment): ?>
-          <form action="<?= BASE_URL ?>payment_request.php" method="GET" style="display:inline;"> <!-- Updated to use BASE_URL -->
+          <form action="<?= BASE_URL ?>/user/payment_request.php" method="GET" style="display:inline;"> <!-- Updated to use BASE_URL -->
             <input type="hidden" name="rental_id" value="<?= $booking['rental_id'] ?>">
             <button type="submit" class="btn-secondary small-btn">Pay Now</button>
           </form>
@@ -159,4 +156,4 @@ function renderBookingCard($booking) {
   <?php endif; ?>
 </main>
 
-<?php include BASE_PATH . 'includes/footer.php';  // Updated to use BASE_PATH ?>
+<?php include BASE_PATH . '/includes/footer.php';  // Updated to use BASE_PATH ?>

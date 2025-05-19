@@ -2,18 +2,18 @@
 session_start();
 require_once '../config/db.php';
 require_once '../config/constants.php';
-include 'includes/header.php';
+include BASE_PATH . '/user/includes/header.php';
 
 // Redirect to login if user is not logged in
 if (!isset($_SESSION['user_id'])) {
-  header("Location: ../login.php");
+  header("Location: " . BASE_URL . "/login.php");
   exit();
 }
 
 // Vehicle ID is required
 if (!isset($_GET['id'])) {
   echo "<p class='no-results'>Vehicle not found.</p>";
-  include 'includes/footer.php';
+  include BASE_PATH . '/user/includes/footer.php';
   exit();
 }
 
@@ -26,12 +26,12 @@ $vehicle = $stmt->fetch();
 
 if (!$vehicle) {
   echo "<p class='no-results'>Vehicle not found.</p>";
-  include 'includes/footer.php';
+  include BASE_PATH . '/user/includes/footer.php';
   exit();
 }
 ?>
 
-<?php include '../includes/flash.php'; ?>
+<?php include BASE_PATH . '/includes/flash.php'; ?>
 
 <main class="container booking-page">
   <h2 class="section-title">Book <?= htmlspecialchars($vehicle['model']) ?></h2>
@@ -57,4 +57,4 @@ if (!$vehicle) {
   </div>
 </main>
 
-<?php include 'includes/footer.php'; ?>
+<?php BASE_PATH . '/user/includes/footer.php'; ?>

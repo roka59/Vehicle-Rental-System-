@@ -2,12 +2,13 @@
 session_start();
 require_once '../config/db.php';
 require_once '../config/constants.php';
-include 'includes/header.php';
+include BASE_PATH . '/user/includes/header.php';
 
-if (!isset($_SESSION['user_id'])) {
-  header("Location: ../login.php");
+if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'user') {
+  header("Location:". BASE_URL . "/login.php");
   exit();
 }
+
 
 $user_id = $_SESSION['user_id'];
 
@@ -90,4 +91,4 @@ $recentBookings = $stmt->fetchAll();
   </div>
 </main>
 
-<?php include 'includes/footer.php'; ?>
+<?php include BASE_PATH . '/user/includes/footer.php'; ?>

@@ -1,10 +1,10 @@
 <?php
 session_start();
-require_once '../config/constants.php';
-require_once BASE_PATH . 'config/db.php';
+require_once dirname(__DIR__, 1).'/config/constants.php';
+require_once dirname(__DIR__, 1).'/config/db.php';
 
 if (!isset($_SESSION['user_id'])) {
-  header("Location: " . BASE_URL . "login.php");
+  header("Location: " . BASE_URL . "/login.php");
   exit();
 }
 
@@ -18,7 +18,7 @@ $confirm_password = $_POST['confirm_password'];
 if (!empty($password)) {
   if ($password !== $confirm_password) {
     $_SESSION['flash_error'] = "Passwords do not match.";
-    header("Location: " . BASE_URL . "user/profile.php");
+    header("Location: " . BASE_URL . "/user/profile.php");
     exit();
   }
   $hashed = password_hash($password, PASSWORD_DEFAULT);
@@ -30,5 +30,5 @@ if (!empty($password)) {
 }
 
 $_SESSION['flash_success'] = "Profile updated successfully.";
-header("Location: " . BASE_URL . "user/profile.php");
+header("Location: " . BASE_URL . "/user/profile.php");
 exit();

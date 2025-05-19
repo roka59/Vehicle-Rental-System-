@@ -49,6 +49,12 @@ body {
   text-decoration: underline;
 }
 
+.logo_url {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
 /* Hero */
 .hero {
   position: relative;
@@ -242,6 +248,7 @@ body {
   display: none;
   transition: opacity 0.5s ease-in-out;
 }
+
 .category-slider img.active {
   display: block;
 }
@@ -799,7 +806,7 @@ body {
   background: #fff;
   padding: 1.2rem;
   border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
   margin-bottom: 2rem;
 }
 
@@ -916,7 +923,7 @@ body {
   background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
 }
 
 .vehicle-img img {
@@ -959,7 +966,7 @@ body {
   padding: 2rem;
   background: #fff;
   border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
 }
 
 .payment-form .form-group {
@@ -1031,9 +1038,17 @@ body {
   font-weight: bold;
 }
 
-.payment-status.pending { color: #ffc107; }
-.payment-status.approved { color: #28a745; }
-.payment-status.rejected { color: #dc3545; }
+.payment-status.pending {
+  color: #ffc107;
+}
+
+.payment-status.approved {
+  color: #28a745;
+}
+
+.payment-status.rejected {
+  color: #dc3545;
+}
 
 .no-results {
   color: #888;
@@ -1049,7 +1064,7 @@ body {
   padding: 2rem;
   background: #fff;
   border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
 }
 
 .profile-form .form-group {
@@ -1142,7 +1157,7 @@ body {
   border-left: 5px solid #007bff;
   padding: 1.2rem 1.5rem;
   border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
   transition: all 0.2s ease-in-out;
 }
 
@@ -1161,9 +1176,17 @@ body {
   font-weight: 600;
 }
 
-.status.pending { color: #ffc107; }
-.status.approved { color: #28a745; }
-.status.cancelled { color: #dc3545; }
+.status.pending {
+  color: #ffc107;
+}
+
+.status.approved {
+  color: #28a745;
+}
+
+.status.cancelled {
+  color: #dc3545;
+}
 
 /* Buttons */
 .action-buttons {
@@ -1239,12 +1262,19 @@ body {
   font-weight: 500;
 }
 
-.status.pending { color: #ffc107; }
-.status.rejected { color: #dc3545; }
+.status.pending {
+  color: #ffc107;
+}
+
+.status.rejected {
+  color: #dc3545;
+}
+
 .status.not {
   color: #888;
   font-style: italic;
 }
+
 .status.not-paid {
   color: #888;
   font-style: italic;
@@ -1283,6 +1313,7 @@ body {
   font-size: 0.75rem;
   font-weight: 600;
 }
+
 .booking-card.approved {
   background-color: #f2fdf7;
   border-left: 5px solid #28a745;
@@ -1328,6 +1359,7 @@ body {
   font-size: 0.75rem;
   font-weight: 600;
 }
+
 .booking-card.pending {
   background-color: #fcfdf2;
   border-left: 5px solid #dcc935;
@@ -1409,3 +1441,83 @@ body {
   vertical-align: middle;
 }
 
+/* Admin Dashboard */
+.dashboard-shortcuts>.shortcut-btn {
+  background: #007bff;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.shortcut-btn:hover {
+  background: #0056b3;
+}
+
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.card-box {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.3s ease;
+}
+
+.card-box:hover {
+  transform: translateY(-5px);
+}
+
+.card-box h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.card-box p {
+  font-size: 1.6rem;
+  margin: 0.3rem 0 0;
+}
+
+.card-box .icon {
+  font-size: 2.2rem;
+}
+
+/* Colors */
+.card-box.blue {
+  border-left: 5px solid #007bff;
+}
+
+.card-box.green {
+  border-left: 5px solid #28a745;
+}
+
+.card-box.orange {
+  border-left: 5px solid #fd7e14;
+}
+
+.card-box.yellow {
+  border-left: 5px solid #ffc107;
+}
+
+.card-box.red {
+  border-left: 5px solid #dc3545;
+}
+
+.card-box.teal {
+  border-left: 5px solid #20c997;
+}
+
+.card-box.purple {
+  border-left: 5px solid #6f42c1;
+}

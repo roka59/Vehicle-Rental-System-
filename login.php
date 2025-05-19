@@ -1,10 +1,17 @@
 <?php
 session_start();
+require_once  './config/constants.php';
+
 if (isset($_SESSION['user_id'])) {
-  header("Location: user/dashboard.php");
+  if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin') {
+    header("Location: " . BASE_URL . "/admin/dashboard.php");
+  } else {
+    header("Location: " . BASE_URL . "/user/dashboard.php");
+  }
   exit();
 }
 ?>
+
 
 <?php include 'includes/header.php'; ?>
 <?php include 'includes/flash.php'; ?> <!-- ✅ Global flash system -->
@@ -14,7 +21,7 @@ if (isset($_SESSION['user_id'])) {
     <div class="login-card">
       <h2 class="login-title">Login to Your Account</h2>
 
-      <form method="POST" action="auth/handle_login.php" class="login-form">
+      <form method="POST" action="<?= BASE_URL ?>/auth/handle_login.php" class="login-form">
         <div class="form-group">
           <label for="email">Email</label>
           <input type="email" name="email" id="email" class="form-input" required placeholder="you@example.com">
@@ -33,11 +40,11 @@ if (isset($_SESSION['user_id'])) {
         <button type="submit" class="btn-primary full-width">Login</button>
 
         <div class="forgot-password">
-          <a href="reset_password_request.php">Forgot Password?</a>
+          <a href="<?= BASE_URL ?>/reset_password_request.php">Forgot Password?</a>
         </div>
 
         <div class="switch-link">
-          Don't have an account? <a href="register.php">Register here</a>
+          Don't have an account? <a href="<?= BASE_URL ?>/register.php">Register here</a>
         </div>
       </form>
     </div>

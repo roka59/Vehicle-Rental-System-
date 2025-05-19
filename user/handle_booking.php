@@ -1,10 +1,10 @@
 <?php
 session_start();
 require_once dirname(__DIR__) . '/config/constants.php'; // Adjusted to use BASE_PATH
-require_once BASE_PATH . 'config/db.php'; // Use defined BASE_PATH for db connection
+require_once BASE_PATH . '/config/db.php'; // Use defined BASE_PATH for db connection
 
 if (!isset($_SESSION['user_id'])) {
-    header("Location: " . BASE_URL . "login.php");
+    header("Location: " . BASE_URL . "/login.php");
     exit();
 }
 
@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     // Validation
     if (!$start_date || !$end_date || $start_date >= $end_date) {
         $_SESSION['flash_error'] = "Please enter a valid rental date range.";
-        header("Location: " . BASE_URL . "booking.php?id=$vehicle_id");
+        header("Location: " . BASE_URL . "/user/booking.php?id=$vehicle_id");
         exit();
     }
 
@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($conflictCheck->rowCount() > 0) {
         $_SESSION['flash_error'] = "This vehicle is already booked for the selected dates.";
-        header("Location: " . BASE_URL . "booking.php?id=$vehicle_id");
+        header("Location: " . BASE_URL . "/user/booking.php?id=$vehicle_id");
         exit();
     }
 
@@ -51,9 +51,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $_SESSION['flash_success'] = "Booking confirmed! Please proceed to My Booking for further process.";
     $rental_id = $pdo->lastInsertId();
-    header("Location: " . BASE_URL . "booking_review.php?rental_id=$rental_id");
+    header("Location: " . BASE_URL . "/user/booking_review.php?rental_id=$rental_id");
     exit();
 } else {
-    header("Location: " . BASE_URL . "vehicles/list.php");
+    header("Location: " . BASE_URL . "/vehicles/list.php");
     exit();
 }

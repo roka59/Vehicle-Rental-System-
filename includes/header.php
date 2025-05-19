@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../config/constants.php';
+  require_once dirname(__DIR__, 1) . '/config/constants.php';
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +18,7 @@ require_once __DIR__ . '/../config/constants.php';
 <body>
   <header class="main-header">
     <div class="container">
-      <h1 class="logo">SwiftRide</h1>
+    <h1 class="logo"><a href="<?= BASE_URL ?>/index.php" class="logo_url">SwiftRide</a></h1>
       <nav class="nav-links">
         <a href="<?= BASE_URL ?>/index.php">Home</a>
         <a href="<?= BASE_URL ?>/vehicles/list.php">Vehicles</a>

@@ -15,28 +15,28 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   // Validate required fields
   if (empty($name) || empty($email) || empty($contact) || empty($license) || empty($password) || empty($confirm)) {
     $_SESSION["flash_warning"] = "All fields are required.";
-    header("Location: " . BASE_URL . "register.php");
+    header("Location: " . BASE_URL . "/register.php");
     exit();
   }
 
   // Email format validation
   if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $_SESSION["flash_error"] = "Invalid email address.";
-    header("Location: " . BASE_URL . "register.php");
+    header("Location: " . BASE_URL . "/register.php");
     exit();
   }
 
   // Password match check
   if ($password !== $confirm) {
     $_SESSION["flash_error"] = "Passwords do not match.";
-    header("Location: " . BASE_URL . "register.php");
+    header("Location: " . BASE_URL . "/register.php");
     exit();
   }
 
   // Password strength check (optional, you can customize this further)
   if (strlen($password) < 8) {
     $_SESSION["flash_error"] = "Password must be at least 8 characters long.";
-    header("Location: " . BASE_URL . "register.php");
+    header("Location: " . BASE_URL . "/register.php");
     exit();
   }
 
@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($stmt->rowCount() > 0) {
       $_SESSION["flash_warning"] = "Email is already registered.";
-      header("Location: " . BASE_URL . "register.php");
+      header("Location: " . BASE_URL . "/register.php");
       exit();
     }
 
@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt->execute([$name, $email, $contact, $license, $hashed]);
 
     $_SESSION["flash_success"] = "Registration successful! You can now log in.";
-    header("Location: " . BASE_URL . "login.php");
+    header("Location: " . BASE_URL . "/login.php");
     exit();
 
   } catch (PDOException $e) {
@@ -70,11 +70,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     error_log("Database Error [Register]: " . $e->getMessage());
 
     $_SESSION["flash_error"] = "Something went wrong. Please try again.";
-    header("Location: " . BASE_URL . "register.php");
+    header("Location: " . BASE_URL . "/register.php");
     exit();
   }
 } else {
   // Redirect if not a POST request
-  header("Location: " . BASE_URL . "register.php");
+  header("Location: " . BASE_URL . "/register.php");
   exit();
 }

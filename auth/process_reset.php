@@ -11,26 +11,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($user_id <= 0) {
         $_SESSION["flash_error"] = "Invalid user ID.";
-        header("Location: " . BASE_URL . "new_password.php");
+        header("Location: " . BASE_URL . "/new_password.php");
         exit();
     }
 
     if (empty($new_password) || empty($confirm_password)) {
         $_SESSION["flash_error"] = "⚠️ Password fields cannot be empty.";
-        header("Location: " . BASE_URL . "new_password.php?user_id=$user_id");
+        header("Location: " . BASE_URL . "/new_password.php?user_id=$user_id");
         exit();
     }
 
     if ($new_password !== $confirm_password) {
         $_SESSION["flash_error"] = "⚠️ Passwords do not match.";
-        header("Location: " . BASE_URL . "new_password.php?user_id=$user_id");
+        header("Location: " . BASE_URL . "/new_password.php?user_id=$user_id");
         exit();
     }
 
     // Optional: Add a password strength check
     if (strlen($new_password) < 8) {
         $_SESSION["flash_error"] = "⚠️ Password must be at least 8 characters long.";
-        header("Location: " . BASE_URL . "new_password.php?user_id=$user_id");
+        header("Location: " . BASE_URL . "/new_password.php?user_id=$user_id");
         exit();
     }
 
@@ -44,15 +44,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         ]);
 
         $_SESSION["flash_success"] = "✅ Password updated successfully. Please login.";
-        header("Location: " . BASE_URL . "login.php");
+        header("Location: " . BASE_URL . "/login.php");
         exit();
     } catch (PDOException $e) {
         // Optionally log $e->getMessage() to a file for debugging instead of exposing to the user
         $_SESSION["flash_error"] = "❌ Failed to update password. Please try again later.";
-        header("Location: " . BASE_URL . "new_password.php?user_id=$user_id");
+        header("Location: " . BASE_URL . "/new_password.php?user_id=$user_id");
         exit();
     }
 } else {
-    header("Location: " . BASE_URL . "reset_password_request.php");
+    header("Location: " . BASE_URL . "/reset_password_request.php");
     exit();
 }

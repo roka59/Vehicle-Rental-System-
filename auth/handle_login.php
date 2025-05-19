@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // Check account status
             if ($user['status'] !== 'active') {
                 $_SESSION['flash_error'] = "Your account is inactive. Please contact support.";
-                header("Location: " . BASE_URL . "login.php");
+                header("Location: " . BASE_URL . "/login.php");
                 exit();
             }
 
@@ -40,19 +40,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 // Redirect based on user role
                 if ($user["role"] === "admin") {
-                    header("Location: " . BASE_URL . "admin/dashboard.php");
+                    header("Location: " . BASE_URL . "/admin/dashboard.php");
                 } else {
-                    header("Location: " . BASE_URL . "user/dashboard.php");
+                    header("Location: " . BASE_URL . "/user/dashboard.php");
                 }
                 exit();
             } else {
                 $_SESSION["flash_error"] = "Incorrect email or password.";
-                header("Location: " . BASE_URL . "login.php");
+                header("Location: " . BASE_URL . "/login.php");
                 exit();
             }
         } else {
             $_SESSION["flash_error"] = "No account found with that email.";
-            header("Location: " . BASE_URL . "login.php");
+            header("Location: " . BASE_URL . "/login.php");
             exit();
         }
     } catch (PDOException $e) {
@@ -60,10 +60,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         error_log("Login Error: " . $e->getMessage());
 
         $_SESSION["flash_error"] = "An unexpected error occurred. Please try again.";
-        header("Location: " . BASE_URL . "login.php");
+        header("Location: " . BASE_URL . "/login.php");
         exit();
     }
 } else {
-    header("Location: " . BASE_URL . "login.php");
+    header("Location: " . BASE_URL . "/login.php");
     exit();
 }
