@@ -48,13 +48,13 @@ require_once './config/constants.php';
           $vehicles = $stmt->fetchAll();
 
           if ($vehicles) {
-              echo "<a href='<?= BASE_URL ?>/vehicles/list.php?type=" . urlencode($type) . "' class='category-card'>";
+              echo "<a href='vehicles/list.php?type=" . urlencode($type) . "' class='category-card'>";
               echo "<div class='category-slider'>";
 
               foreach ($vehicles as $vehicle) {
                   $img = htmlspecialchars($vehicle['image'] ?? 'default.jpg');
                   $alt = htmlspecialchars($type . " image");
-                  $imgPath = "<?= BASE_URL ?>/assets/images/" . $img;
+                  $imgPath = "assets/images/" . $img;
 
                   echo "<img src='{$imgPath}' alt='{$alt}' class='category-image' loading='lazy' />";
               }
