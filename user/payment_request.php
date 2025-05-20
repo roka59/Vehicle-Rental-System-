@@ -1,10 +1,11 @@
 <?php
 session_start();
 require_once '../config/db.php';
-include 'includes/header.php';
+require_once '../config/constants.php';
+include BASE_PATH . '/user/includes/header.php';
 
-if (!isset($_SESSION['user_id'])) {
-  header("Location: ../login.php");
+if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'user') {
+  header("Location:". BASE_URL . "/login.php");
   exit();
 }
 
@@ -64,4 +65,4 @@ $bookings = $stmt->fetchAll();
   <?php endif; ?>
 </main>
 
-<?php include 'includes/footer.php'; ?>
+<?php include BASE_PATH . '/user/includes/footer.php'; ?>

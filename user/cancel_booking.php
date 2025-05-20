@@ -1,9 +1,9 @@
 <?php
 session_start();
 require_once '../config/db.php';
-
-if (!isset($_SESSION['user_id'])) {
-  header("Location: ../login.php");
+require_once '../config/constants.php';
+if (!isset($_SESSION['user_id']) || $_SESSION['user_role'] !== 'user') {
+  header("Location:". BASE_URL . "/login.php");
   exit();
 }
 
@@ -44,5 +44,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   
 }
 
-header("Location: my_booking.php");
+header("Location:" .BASE_URL. "/user/my_booking.php");
 exit();

@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../config/db.php';
+require_once '../config/constants.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_SESSION['user_id'])) {
   $user_id = $_SESSION['user_id'];
@@ -10,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_SESSION['user_id'])) {
 
   $allowedMethods = ['Bank Transfer', 'Cash'];
   if (!in_array($method, $allowedMethods)) {
-    header("Location: payment_request.php?error=invalid_method");
+    header("Location: ". BASE_URL . "/user/payment_request.php?error=invalid_method");
     exit();
   }
 
@@ -18,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_SESSION['user_id'])) {
   $check = $pdo->prepare("SELECT 1 FROM payments WHERE rental_id = ?");
   $check->execute([$rental_id]);
   if ($check->fetch()) {
-    header("Location: payment_request.php?error=already_requested");
+    header("Location: ". BASE_URL . "/user/payment_request.php?error=already_requested");
     exit();
   }
 
@@ -33,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_SESSION['user_id'])) {
   $rental = $stmt->fetch();
 
   if (!$rental) {
-    header("Location: payment_request.php?error=notfound");
+    header("Location: ". BASE_URL . "/user/payment_request.php?error=notfound");
     exit();
   }
 
@@ -52,9 +53,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_SESSION['user_id'])) {
   $stmt = $pdo->prepare("UPDATE rentals SET status = 'Pending' WHERE rental_id = ?");
   $stmt->execute([$rental_id]);
 
-  header("Location: my_booking.php?payment=success");
+  header("Location: ". BASE_URL . "/user/my_booking.php?payment=success");
   exit();
 } else {
-  header("Location: payment_request.php");
+  header("Location: ". BASE_URL . "/user/payment_request.php");
   exit();
 }
