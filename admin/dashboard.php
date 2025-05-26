@@ -22,11 +22,11 @@ $pendingPayments = $pdo->query("SELECT COUNT(*) FROM payments WHERE status = 'Pe
   <h2 class="section-title">Admin Dashboard</h2>
 
   <div class="dashboard-shortcuts">
-    <a href="manage_users.php" class="shortcut-btn">👤 Manage Users</a>
-    <a href="manage_vehicles.php" class="shortcut-btn">🚗 Manage Vehicles</a>
-    <a href="manage_bookings.php" class="shortcut-btn">📋 Manage Bookings</a>
-    <a href="approve_payments.php" class="shortcut-btn">💳 Approve Payments</a>
-    <a href="reports.php" class="shortcut-btn">📊 Reports</a>
+    <a href="<?= BASE_URL ?>/admin/manage_users.php" class="shortcut-btn">👤 Manage Users</a>
+    <a href="<?= BASE_URL ?>/admin/manage_vehicles.php" class="shortcut-btn">🚗 Manage Vehicles</a>
+    <a href="<?= BASE_URL ?>/admin/manage_bookings.php" class="shortcut-btn">📋 Manage Bookings</a>
+    <a href="<?= BASE_URL ?>/admin/approve_payments.php" class="shortcut-btn">💳 Approve Payments</a>
+    <a href="<?= BASE_URL ?>/admin/reports.php" class="shortcut-btn">📊 Reports</a>
   </div>
 
   <div class="dashboard-cards">
